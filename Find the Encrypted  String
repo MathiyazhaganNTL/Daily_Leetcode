@@ -1,0 +1,11 @@
+class Solution {
+    public String getEncryptedString(String s, int k) {
+        int length=s.length();
+       char store[] = new char[length];
+       for(int i=0;i<s.length();i++)
+       {
+        store[i]=(s.charAt( (i+k )% length));
+       } 
+       return new String(store);
+    }
+}
