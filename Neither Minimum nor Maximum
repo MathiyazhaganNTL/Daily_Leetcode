@@ -1,0 +1,9 @@
+class Solution {
+    public int findNonMinOrMax(int[] nums) {
+        int n =nums.length;
+        if(n==2||n==1) return -1;
+        Arrays.sort(nums);
+        int index=(n/2);
+        return nums[index];
+    }
+}
