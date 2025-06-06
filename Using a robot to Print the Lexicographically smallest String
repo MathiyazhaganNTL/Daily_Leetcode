@@ -1,0 +1,24 @@
+class Solution {
+    public String robotWithString(String s) {
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+        Stack<Character> value = new Stack<>();
+        StringBuilder res = new StringBuilder();
+        char minchar = 'a';
+        for (char c : s.toCharArray()) {
+            value.push(c);
+            count[c - 'a']--;
+
+            while (minchar <= 'z' && count[minchar - 'a'] == 0) {
+                minchar++;
+            }
+
+            while (!value.isEmpty() && value.peek() <= minchar) {
+                res.append(value.pop());
+            }
+        }
+        return res.toString();
+    }
+}
