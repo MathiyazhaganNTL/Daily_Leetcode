@@ -1,0 +1,35 @@
+class Solution {
+    public int maxDiff(int num) {
+        String str = String.valueOf(num);
+        char toReplaceMax = 0;
+        for (char c : str.toCharArray()) {
+            if (c != '9') {
+                toReplaceMax = c;
+                break;
+            }
+        }
+        String maxStr = (toReplaceMax == 0) ? str : str.replace(toReplaceMax, '9');
+
+        char toReplaceMin = 0;
+        char replacementMin = 0;
+        if (str.charAt(0) != '1') {
+            toReplaceMin = str.charAt(0);
+            replacementMin = '1';
+        } else {
+            for (int i = 1; i < str.length(); i++) {
+                char c = str.charAt(i);
+                if (c != '0' && c != '1') {
+                    toReplaceMin = c;
+                    replacementMin = '0';
+                    break;
+                }
+            }
+        }
+
+        String minStr = (toReplaceMin == 0) ? str : str.replace(toReplaceMin, replacementMin);
+
+        int max = Integer.parseInt(maxStr);
+        int min = Integer.parseInt(minStr);
+        return max - min;
+    }
+}
