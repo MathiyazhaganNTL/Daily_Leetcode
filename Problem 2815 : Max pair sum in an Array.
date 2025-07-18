@@ -1,0 +1,25 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        int n=nums.length;
+        int maxx=-1;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                int n1=getMaxDigit(nums[i]);
+                int n2=getMaxDigit(nums[j]);
+                if(n1==n2){
+                    maxx=Math.max(maxx,nums[j]+nums[i]);
+                }
+            }
+        }
+        return maxx;
+    }
+    private int getMaxDigit(int num){
+        int maxx=0;
+        while(num>0){
+            int r=num%10;
+            maxx=Math.max(maxx,r);
+            num/=10;
+        }
+        return maxx;
+    }
+}
