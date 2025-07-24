@@ -1,0 +1,21 @@
+class Solution {
+    public int numberOfChild(int n, int k) {
+        int time=0;
+        while(true){
+            for(int i=1;i<=n-1;i++){
+                time++;
+                if(k==time){
+                    return i;
+                } 
+                
+            }
+            for(int i=n-2;i>=0;i--){
+                time++;
+                if(k==time){
+                    return i;
+                }
+            }
+            
+        }
+    }
+}
