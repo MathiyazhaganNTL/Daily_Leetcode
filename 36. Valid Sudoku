@@ -1,0 +1,49 @@
+board = [["5","3","7",".",".",".",".",".","."],
+         ["6",".",".","1","9","5",".",".","."],
+         [".","9","8",".",".",".",".","6","."],
+         ["8",".",".",".","6",".",".",".","3"],
+         ["4",".",".","8",".","3",".",".","1"],
+         ["7",".",".",".","2",".",".",".","6"],
+         [".","6",".",".",".",".","2","8","."],
+         [".",".",".","4","1","9",".",".","5"],
+         [".",".",".",".","8",".",".","7","9"]]
+
+row = len(board)
+cols = len(board[0])
+
+con = True
+
+for i in range(row):
+    if not con: 
+        break
+    for j in range(cols):
+        if board[i][j] == ".":   # skip empty cells
+            continue
+
+        # --- row check ---
+        if board[i].count(board[i][j]) > 1:
+            print("False (row conflict)")
+            con = False
+            break
+
+        # --- column check ---
+        col_vals = [board[x][j] for x in range(row)]
+        if col_vals.count(board[i][j]) > 1:
+            print("False (column conflict)")
+            con = False
+            break
+
+        # --- 3x3 box check ---
+        start_row, start_col = 3 * (i // 3), 3 * (j // 3)
+        seen = 0
+        for r in range(start_row, start_row + 3):
+            for c in range(start_col, start_col + 3):
+                if board[r][c] == board[i][j]:
+                    seen += 1
+        if seen > 1:
+            print("False (box conflict)")
+            con = False
+            break
+
+if con:
+    print("True")
