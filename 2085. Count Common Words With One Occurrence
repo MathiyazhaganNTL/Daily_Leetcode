@@ -1,0 +1,13 @@
+class Solution(object):
+    def countWords(self, words1, words2):
+        """
+        :type words1: List[str]
+        :type words2: List[str]
+        :rtype: int
+        """
+        cnt=0
+        for item in words1 :
+            if item in words2 and words1.count(item)==1 and words2.count(item)==1 :
+                cnt+=1
+        return cnt
+        
