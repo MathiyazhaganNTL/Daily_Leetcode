@@ -1,0 +1,18 @@
+class Solution(object):
+    def duplicateZeros(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: None
+        """
+        li = []
+        i = 0
+        while i < len(arr):
+            if arr[i] == 0:
+                li.append(0)
+                if len(li) < len(arr):
+                    li.append(0)
+            else:
+                li.append(arr[i])
+            i += 1
+        for j in range(len(arr)):
+            arr[j] = li[j]
