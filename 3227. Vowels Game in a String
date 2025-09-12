@@ -1,0 +1,21 @@
+class Solution(object):
+    def doesAliceWin(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        v="aeiou"
+        con=True
+        cnt=0
+        for i in range(len(s)) :
+            if s[i] in v :
+                con=False
+                cnt+=1
+        if con :
+            return False
+        elif cnt%2!=0 :
+            return True
+        else :
+            return True
+        
+        
