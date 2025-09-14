@@ -1,0 +1,13 @@
+class Solution:
+    def minimalKSum(self, nums: List[int], k: int) -> int:
+        nums=list(set(nums))
+        nums.sort()
+        n=len(nums)
+        sums=0
+        for i in range(n):
+            if nums[i]<=k:
+                k+=1
+                sums+=nums[i]
+        res=k*(k+1)//2-sums
+        return res
+        
