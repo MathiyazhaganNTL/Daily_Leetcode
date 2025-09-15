@@ -1,0 +1,21 @@
+class Solution(object):
+    def canBeTypedWords(self, text, brokenLetters):
+        cnt=0
+        li=[]
+        s=""
+        for i in range(len(text)) :
+            if text[i]!=" " :
+                s+=text[i]
+            else :
+                li.append(s)
+                s=""
+        li.append(s)
+        for item in li :
+            found=True
+            for it in item :
+                if it  in brokenLetters :
+                    found=False
+            if found :
+                cnt+=1
+        return cnt
+        
