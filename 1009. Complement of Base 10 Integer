@@ -1,0 +1,15 @@
+class Solution(object):
+    def bitwiseComplement(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        s = bin(n)[2:]
+        s = s.replace("1", "x")  
+        s = s.replace("0", "1") 
+        s = s.replace("x", "0")
+        result=int(str(s),2)
+        return result
+
+
+        
