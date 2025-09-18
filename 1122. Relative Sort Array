@@ -1,0 +1,29 @@
+class Solution(object):
+    def relativeSortArray(self, arr1, arr2):
+        """
+        :type arr1: List[int]
+        :type arr2: List[int]
+        :rtype: List[int]
+        """
+        result=[]
+        last=[]
+        dic={}
+
+        for i in range(len(arr2)):
+            if arr2[i] in arr1:
+                dic[arr2[i]] = arr1.count(arr2[i])
+
+        for i in range(len(arr2)):
+            if arr2[i] in dic:
+                val = dic[arr2[i]]
+                for j in range(val):
+                    result.append(arr2[i])
+        for x in arr1:
+            if x not in arr2:
+                last.append(x)
+        last.sort()
+        result.extend(last)
+        return result
+         
+           
+        
