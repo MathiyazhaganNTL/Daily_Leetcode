@@ -1,0 +1,18 @@
+class Solution(object):
+    def maxFrequencyElements(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        result=0
+        cnt=0
+        new=set()
+        for item in nums :
+            if item not in new :
+                val=nums.count(item)
+                result=max(result,val)
+                new.add(item)
+        for item in new :
+            if result==nums.count(item):
+                cnt+=result
+        return cnt
