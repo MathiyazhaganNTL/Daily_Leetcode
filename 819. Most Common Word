@@ -1,0 +1,26 @@
+class Solution(object):
+    def mostCommonWord(self, paragraph, banned):
+        """
+        :type paragraph: str
+        :type banned: List[str]
+        :rtype: str
+        """
+        
+        #replacing each symbols, so they are not included with words
+        symbols = "!?',;." 
+        for s in symbols:
+            paragraph = paragraph.replace(s," ")
+    
+        paraList = split(lower(paragraph))
+        wordCounter = {}
+        for w in paraList:
+            if w not in banned:
+                if w not in wordCounter.keys():
+                    wordCounter[w] = 1 
+                else:
+                    wordCounter[w] += 1
+        
+        maxVal = max(wordCounter.values())
+        for k,v in wordCounter.items():
+            if v == maxVal:
+                return k
