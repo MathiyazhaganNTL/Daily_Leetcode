@@ -1,0 +1,24 @@
+class Solution(object):
+    def sortSentence(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        new = []         
+        word = ""
+
+        for i in range(len(s)):
+            if s[i].isalpha():
+                word += s[i]
+            elif s[i].isdigit():
+                value = int(s[i])
+            
+                if len(new) <= value:
+                    new.extend([""] * (value - len(new) + 1))
+                new[value] = word
+                word = ""
+            else:
+                continue  
+
+        result = " ".join([w for w in new if w != ""])
+        return result
