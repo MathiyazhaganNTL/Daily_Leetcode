@@ -1,0 +1,23 @@
+s = "aaabbbccdddde"
+fre = {}
+
+for i in range(len(s)):
+    if s[i] not in fre:
+        fre[s[i]] = s.count(s[i])
+print(fre)
+
+sorted_dict = dict(sorted(fre.items(), key=lambda x: x[1]))
+print(sorted_dict)
+
+freq_count = {}
+for val in sorted_dict.values():
+    freq_count[val] = freq_count.get(val, 0) + 1
+
+max_freq_occurrence = max(freq_count.values())
+common_freq = [k for k, v in freq_count.items() if v == max_freq_occurrence][0]
+result = ""
+for item in sorted_dict:
+    if sorted_dict[item] == common_freq:
+        result += item
+
+print(result)
