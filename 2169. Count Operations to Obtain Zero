@@ -1,0 +1,24 @@
+class Solution(object):
+    def countOperations(self, num1, num2):
+        """
+        :type num1: int
+        :type num2: int
+        :rtype: int
+        """
+        cnt=0
+        while True and num1!=0 and num2!=0 :
+            if num1>=num2 :
+                val=num1-num2
+                num1=val
+                val=0
+                cnt+=1
+            elif num1!=0 and num2!=0 :
+                val=num2-num1
+                num2=val
+                val=0
+                cnt+=1
+            else :
+                break
+        return cnt
+
+        
