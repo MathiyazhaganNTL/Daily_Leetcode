@@ -1,0 +1,33 @@
+class Solution(object):
+    def findMaxForm(self, strs, m, n):
+        """
+        :type strs: List[str]
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        h = []
+        for i in range(len(strs)):
+            x = 0
+            y = 0
+            for j in range(len(strs[i])):
+                if strs[i][j] == '0':
+                    x += 1
+                else:
+                    y += 1
+            h.append([x, y])
+
+        h.sort(key=lambda pair: pair[0] + pair[1])
+        
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        
+        for i in range(len(h)):
+            z0, z1 = h[i]
+            
+            for s1 in range(m, z0 - 1, -1):
+                for s2 in range(n, z1 - 1, -1):
+                    if s1 >= z0 and s2 >= z1:
+                        c = max(dp[s1][s2], dp[s1 - z0][s2 - z1] + 1)
+                        dp[s1][s2] = c
+        
+        return dp[m][n]
