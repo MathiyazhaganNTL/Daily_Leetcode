@@ -1,0 +1,3 @@
+class Solution(object):
+    def minimumOperations(self, nums):
+        return sum(num % 3 > 0 for num in nums)
