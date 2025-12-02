@@ -1,0 +1,19 @@
+#KN
+class Solution:
+    def countTrapezoids(self, points):
+        MOD = 10**9 + 7
+        from collections import Counter
+        cnt = Counter(y for _, y in points)
+        A = []
+        for y in cnt:
+            if cnt[y] >= 2:
+                A.append(cnt[y] * (cnt[y] - 1) // 2)
+        
+        if len(A) < 2:
+            return 0
+        S = sum(A) % MOD
+        S2 = sum((x * x) % MOD for x in A) % MOD
+        ans = (S * S - S2) % MOD
+        ans = ans * pow(2, MOD - 2, MOD) % MOD
+        
+        return ans % MOD
