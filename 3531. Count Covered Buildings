@@ -1,0 +1,27 @@
+from typing import List
+class Solution:
+    def countCoveredBuildings(self, n: int, buildings: List[List[int]]) -> int:
+        x = {}
+        y = {}
+        buildings.sort(key=lambda x: (x[1]))
+        for i in range(len(buildings)):
+            if buildings[i][0] in x:
+                x[buildings[i][0]].append(buildings[i][1])
+            else:
+                x[buildings[i][0]] = [buildings[i][1]]
+        buildings.sort(key=lambda x: (x[0]))
+        for i in range(len(buildings)):
+            if buildings[i][1] in y:
+                y[buildings[i][1]].append(buildings[i][0])
+            else:
+                y[buildings[i][1]] = [buildings[i][0]]
+        output = 0
+        for i in range(len(buildings)):
+            x_cord,y_cord = buildings[i]
+            up = x[x_cord][0]
+            bottom = x[x_cord][-1]
+            left = y[y_cord][0]
+            right = y[y_cord][-1]
+            if left < x_cord < right and bottom > y_cord > up:
+                output += 1
+        return output
