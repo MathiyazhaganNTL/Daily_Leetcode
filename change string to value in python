@@ -1,0 +1,3 @@
+val=int(input("Enter the string value :"))
+val=int(val)
+print("The integer value is :",val)
