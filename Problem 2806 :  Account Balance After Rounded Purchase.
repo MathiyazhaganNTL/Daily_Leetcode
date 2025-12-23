@@ -1,8 +1,0 @@
-class Solution {
-    public int accountBalanceAfterPurchase(int purchaseAmount) {
-        int n= purchaseAmount%10;
-        if (n==0) return 100-purchaseAmount;
-        else if (n>=5) return 100- (purchaseAmount+(10-n));
-        return 100- purchaseAmount+n;
-    }
-}

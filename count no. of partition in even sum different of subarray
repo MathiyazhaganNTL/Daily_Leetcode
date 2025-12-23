@@ -1,4 +1,0 @@
-class Solution(object):
-    def countPartitions(self, nums):
-        if sum(nums) % 2 : return 0
-        return len(nums) - 1

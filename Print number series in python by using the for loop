@@ -1,3 +1,0 @@
-val=int(input("Enter the value :"))
-for i in range(0,val) :
-  print(i+1)
