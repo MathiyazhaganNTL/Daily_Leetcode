@@ -1,0 +1,35 @@
+class Solution(object):
+    def constructTransformedArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        val=nums
+        result=[]
+        length=len(nums)
+        for i in range(0,length) :
+            if nums[i]>0 :
+                # check=nums[i]
+                move=i
+                for j in range(nums[i]) :
+                    if move!=length-1 :
+                        # cnt+=1
+                        move+=1
+                    else :
+                        move=0
+                result.append(nums[move])
+                    
+            else :
+                # print("negative")
+                move=i
+                pos=-(nums[i])
+                for j in range(pos) :
+                    if move!=0 :
+                        # cnt+=1
+                        move-=1
+                    else :
+                        move=length-1
+                # print("index value",move)
+                result.append(nums[move])
+                # print(result)
+        return result
