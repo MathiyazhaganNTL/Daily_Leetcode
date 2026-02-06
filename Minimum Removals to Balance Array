@@ -1,0 +1,9 @@
+class Solution:
+    def minRemoval(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = n
+        for i in range(n):
+            j = bisect.bisect_right(nums, k*nums[i])
+            ans = min(ans, n-j+i)
+        return ans
