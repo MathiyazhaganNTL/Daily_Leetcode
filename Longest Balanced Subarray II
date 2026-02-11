@@ -1,0 +1,87 @@
+from collections import defaultdict, deque
+
+class SegmentTree:
+    def __init__(self, n):
+        self.n = n
+        self.minv = [0] * (4 * n)
+        self.maxv = [0] * (4 * n)
+        self.lazy = [0] * (4 * n)
+
+    def _push(self, idx):
+        if self.lazy[idx] != 0:
+            for child in (idx * 2, idx * 2 + 1):
+                self.minv[child] += self.lazy[idx]
+                self.maxv[child] += self.lazy[idx]
+                self.lazy[child] += self.lazy[idx]
+            self.lazy[idx] = 0
+
+    def _range_add(self, idx, left, right, l, r, val):
+        if l > right or r < left:
+            return
+        if l <= left and right <= r:
+            self.minv[idx] += val
+            self.maxv[idx] += val
+            self.lazy[idx] += val
+            return
+        self._push(idx)
+        mid = (left + right) // 2
+        self._range_add(idx * 2, left, mid, l, r, val)
+        self._range_add(idx * 2 + 1, mid + 1, right, l, r, val)
+        self.minv[idx] = min(self.minv[idx * 2], self.minv[idx * 2 + 1])
+        self.maxv[idx] = max(self.maxv[idx * 2], self.maxv[idx * 2 + 1])
+
+    def range_add(self, l, r, val):
+        if l <= r:
+            self._range_add(1, 0, self.n - 1, l, r, val)
+
+    def _query_zero(self, idx, left, right, l):
+        if right < l or self.minv[idx] > 0 or self.maxv[idx] < 0:
+            return -1
+        if left == right:
+            return left if self.minv[idx] == 0 else -1
+        self._push(idx)
+        mid = (left + right) // 2
+        res = self._query_zero(idx * 2 + 1, mid + 1, right, l)
+        if res != -1:
+            return res
+        return self._query_zero(idx * 2, left, mid, l)
+
+    def query_zero_from(self, l):
+        return self._query_zero(1, 0, self.n - 1, l)
+
+
+class Solution:
+    def longestBalanced(self, nums):
+        n = len(nums)
+        pos = defaultdict(deque)
+
+        for i, v in enumerate(nums):
+            pos[v].append(i)
+
+        seg = SegmentTree(n)
+
+        # Initial contributions for l = 0
+        for v in pos:
+            first = pos[v][0]
+            sign = 1 if v % 2 else -1
+            seg.range_add(first, n - 1, sign)
+
+        ans = 0
+
+        for l in range(n):
+            r = seg.query_zero_from(l)
+            if r != -1:
+                ans = max(ans, r - l + 1)
+
+            v = nums[l]
+            sign = 1 if v % 2 else -1
+            pos[v].popleft()
+
+            if pos[v]:
+                nxt = pos[v][0]
+            else:
+                nxt = n
+
+            seg.range_add(0, nxt - 1, -sign)
+
+        return ans
