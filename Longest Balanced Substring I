@@ -1,0 +1,12 @@
+class Solution:
+    def longestBalanced(self, s: str) -> int:
+        n = len(s)
+        res = 0
+        for i in range(n):
+            freq = [0]*26
+            for j in range(i, n):
+                freq[ord(s[j])-97] += 1
+                vals = [f for f in freq if f > 0]
+                if min(vals) == max(vals):
+                    res = max(res, j - i + 1)
+        return res
