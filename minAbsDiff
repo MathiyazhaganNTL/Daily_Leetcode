@@ -1,0 +1,5 @@
+class Solution:
+    def minAbsDiff(self, g: List[List[int]], k: int) -> List[List[int]]:
+        return [[min(starmap(sub,pairwise(sorted(
+            {v for ii in range(k) for v in g[i+ii][j:j+k]})[::-1])),default=0)
+                for j in range(len(g[0])-k+1)] for i in range(len(g)-k+1)]
