@@ -1,0 +1,45 @@
+You are an expert frontend developer and UI/UX designer.
+
+I have a GitHub profile README header with a cyberpunk theme (dark background, red glowing text, "MATHIYAZHAGAN NTL", Silent Thunder Developer style).
+
+I want to enhance this header by integrating a cartoon developer illustration (provided image) into the design.
+
+🎯 Requirements:
+
+* Place the cartoon developer image naturally in the header (left or right side, balanced with text).
+* Maintain the cyberpunk aesthetic (dark, neon red glow, futuristic UI elements).
+* Convert the static header into a more “live” feel using:
+
+  * subtle animations (CSS or SVG-based if possible)
+  * glowing effects
+  * floating or breathing motion for the character
+* Ensure it works perfectly inside GitHub README (Markdown-compatible with HTML/CSS where allowed).
+* Optimize for responsiveness (desktop + mobile GitHub view).
+* Keep performance lightweight (no heavy JS; prefer pure CSS/SVG animations or GIF fallback).
+
+🎨 Style guidelines:
+
+* Background: dark grid / cyberpunk UI
+* Colors: red neon (#ff0000), black, subtle blue accents
+* Typography: futuristic / hacker style
+* Add small UI elements like:
+
+  * “System Online”
+  * “Always Building”
+  * subtle blinking dots or terminal effects
+
+🧠 Output format:
+
+1. Final GitHub README header code (HTML + inline CSS or SVG)
+2. If animation is limited in GitHub:
+
+   * Provide an alternative (GIF or SVG animation approach)
+3. Explain where to place the image file in repo
+4. Keep code clean, modular, and easy to customize
+
+⚡ Bonus:
+
+* Add a slight hover interaction if possible
+* Add typing or glitch effect to the title text
+
+Make the result visually stunning, modern, and professional — like a developer portfolio landing header.
