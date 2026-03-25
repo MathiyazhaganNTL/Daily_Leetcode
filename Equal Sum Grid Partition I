@@ -1,0 +1,3 @@
+class Solution:
+    def canPartitionGrid(self, g: List[List[int]]) -> bool:
+        return sum(chain(*g))/2 in chain(*(accumulate(map(sum,g)) for g in (g,zip(*g))))
