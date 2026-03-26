@@ -1,0 +1,46 @@
+class Solution:
+    def canPartitionGrid(self, grid: List[List[int]]) -> bool:
+        total = 0
+        rows = len(grid)
+        cols = len(grid[0])
+        for i in range(rows):
+            for j in range(cols):
+                total += grid[i][j]
+        for _ in range(4):
+            visited = set()
+            visited.add(0)
+            vals = 0
+            rows = len(grid)
+            cols = len(grid[0])
+            if rows < 2:
+                grid = self.rotation(grid)
+                continue
+            if cols == 1:
+                for i in range(rows - 1):
+                    vals += grid[i][0]
+                    flag = vals * 2 - total
+                    if flag == 0 or flag == grid[0][0] or flag == grid[i][0]:
+                        return True
+                grid = self.rotation(grid)
+                continue
+            for i in range(rows - 1):
+                for j in range(cols):
+                    visited.add(grid[i][j])
+                    vals += grid[i][j]
+                flag = vals * 2 - total
+                if i == 0:
+                    if flag == 0 or flag == grid[0][0] or flag == grid[i][cols - 1]:
+                        return True
+                    continue
+                if flag in visited:
+                    return True
+            grid = self.rotation(grid)
+        return False
+    def rotation(self, grid: List[List[int]]) -> List[List[int]]:
+        rows = len(grid)
+        cols = len(grid[0])
+        tmp = [[0] * rows for _ in range(cols)]
+        for i in range(rows):
+            for j in range(cols):
+                tmp[j][rows - 1 - i] = grid[i][j]
+        return tmp
