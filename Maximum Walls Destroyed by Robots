@@ -1,0 +1,54 @@
+class Solution:
+    def maxWalls(self, robots: List[int], distance: List[int], walls: List[int]) -> int:
+        
+        robots_sorted = sorted(zip(robots, distance))
+        pos = [r[0] for r in robots_sorted]
+        d = [r[1] for r in robots_sorted]
+        
+        robot_positions = set(pos)
+        base_destroyed = 0
+        filtered_walls = []
+        
+        for w in walls:
+            if w in robot_positions:
+                base_destroyed += 1
+            else:
+                filtered_walls.append(w)
+                
+        filtered_walls.sort()
+        
+        # to count walls strictly within a coordinate range
+        def count_walls(left, right):
+            if left > right:
+                return 0
+            idx1 = bisect.bisect_left(filtered_walls, left)
+            idx2 = bisect.bisect_right(filtered_walls, right)
+            return idx2 - idx1
+
+        n = len(pos)
+        
+        # Base case - Robot 0
+        prev_L = count_walls(pos[0] - d[0], pos[0] - 1)
+        prev_R = 0
+        
+        for i in range(1, n):
+            L_reach = max(pos[i-1] + 1, pos[i] - d[i])
+            R_reach = min(pos[i] - 1, pos[i-1] + d[i-1])
+            
+            opt1_L = prev_L + count_walls(L_reach, pos[i] - 1)
+
+            if R_reach < L_reach:
+                opt2_L = prev_R + count_walls(pos[i-1] + 1, R_reach) + count_walls(L_reach, pos[i] - 1)
+            else:
+                opt2_L = prev_R + count_walls(pos[i-1] + 1, pos[i] - 1)
+            
+            curr_L = max(opt1_L, opt2_L)
+            opt1_R = prev_L + 0
+            opt2_R = prev_R + count_walls(pos[i-1] + 1, R_reach)
+            
+            curr_R = max(opt1_R, opt2_R)
+            prev_L, prev_R = curr_L, curr_R
+            
+        ans = max(prev_L, prev_R + count_walls(pos[n-1] + 1, pos[n-1] + d[n-1]))
+        
+        return ans + base_destroyed
