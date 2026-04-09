@@ -1,0 +1,53 @@
+import math
+
+class Solution:
+    def xorAfterQueries(self, nums: list[int], queries: list[list[int]]) -> int:
+        n = len(nums)
+        mod = 10**9 + 7
+        # Threshold for Square Root Decomposition
+        block_size = int(math.sqrt(n))
+        
+        # 1. Offline storage for "Light" queries (small k)
+        light_queries = [[] for _ in range(block_size + 1)]
+        
+        for l, r, k, v in queries:
+            if k > block_size:
+                # Direct execution for "Heavy" queries
+                curr = l
+                while curr <= r:
+                    nums[curr] = (nums[curr] * v) % mod
+                    curr += k
+            else:
+                light_queries[k].append((l, r, v))
+        
+        # 2. Process Light queries using step-wise prefix products
+        for k in range(1, block_size + 1):
+            if not light_queries[k]:
+                continue
+            
+            # Create a difference array for the current step size k
+            diff = [1] * (n + k + 1)
+            for l, r, v in light_queries[k]:
+                # Apply multiplier at start
+                diff[l] = (diff[l] * v) % mod
+                
+                # Apply modular inverse at the first jump point after 'r'
+                inv_v = pow(v, mod - 2, mod)
+                last_pos = l + ((r - l) // k) * k
+                if last_pos + k < n:
+                    diff[last_pos + k] = (diff[last_pos + k] * inv_v) % mod
+            
+            # Propagate the multipliers like a wave (Ripple Effect)
+            for i in range(k, n):
+                diff[i] = (diff[i] * diff[i-k]) % mod
+            
+            # Apply the accumulated multipliers to the original array
+            for i in range(n):
+                if diff[i] != 1:
+                    nums[i] = (nums[i] * diff[i]) % mod
+                    
+        # 3. Final XOR sum calculation
+        ans = 0
+        for x in nums:
+            ans ^= x
+        return ans
