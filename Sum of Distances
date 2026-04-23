@@ -1,0 +1,45 @@
+import numpy as np
+from typing import List
+
+class Solution:
+    def distance(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = np.zeros(n, dtype=np.int64)
+        nums_arr = np.array(nums)
+        
+        # 1. Coordinate Manifold Transformation
+        idx_map = np.argsort(nums_arr)
+        sorted_nums = nums_arr[idx_map]
+        
+        # 2. Segment Discovery
+        diffs = np.where(np.diff(sorted_nums) != 0)[0] + 1
+        starts = np.concatenate(([0], diffs))
+        ends = np.concatenate((diffs, [n]))
+        
+        # 3. Vectorized Path Integration
+        for s, e in zip(starts, ends):
+            if e - s <= 1: continue
+            
+            group_idx = idx_map[s:e]
+            sort_order = np.argsort(group_idx)
+            group_coords = group_idx[sort_order].astype(np.int64)  # sorted original indices
+            
+            # The Integral of the coordinates
+            prefix = np.cumsum(group_coords)
+            total_sum = prefix[-1]
+            count = e - s
+            
+            # 4. Projection Logic
+            left_sums = np.concatenate(([0], prefix[:-1]))
+            right_sums = total_sum - prefix
+            
+            left_counts = np.arange(count, dtype=np.int64)
+            right_counts = (count - 1) - left_counts
+            
+            # The Energy Balance
+            group_res = (group_coords * left_counts - left_sums) + \
+                        (right_sums - group_coords * right_counts)
+            
+            res[group_coords] = group_res
+            
+        return res.tolist()
