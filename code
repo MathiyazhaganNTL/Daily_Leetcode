@@ -1,0 +1,596 @@
+LeetCode Logo
+Daily Question
+Debugging...
+Debugging...
+
+
+
+
+
+
+
+
+
+366
+366Streaks
+Miss me yet?
+DCC Badge
+
+avatar
+Avatar
+Mathiyazhagan_NTL
+Access all features with our Premium subscription!
+myLists
+My Lists
+notebook
+Notebook
+progress
+Progress
+points
+Points
+Try New Features
+Orders
+My Playgrounds
+Settings
+Appearance
+Sign Out
+Premium
+Description
+Description
+Editorial
+Editorial
+Solutions
+Submissions
+Submissions
+Code
+
+
+Testcase
+Test Result
+Test Result
+All Solutions
+
+
+God Is Great
+
+Muthu Vrn
+Jul LeetCoding Challenge
+200
+14 hours ago
+Python3
+Intuition
+Approach
+Complexity
+Time complexity:
+Space complexity:
+Code
+class Solution:
+    def furthestDistanceFromOrigin(self, moves: str) -> int:
+        # ✨ One-liner version (3 passes, super clean):
+        # return abs(moves.count('L') - moves.count('R')) + moves.count('_')
+
+        # 🔁 One-pass version (1 pass, more explicit):
+        L = R = Dash = 0
+        for i in moves:
+            if i == "L":
+                L += 1
+            elif i == "R":
+                R += 1
+            else:
+                Dash += 1
+        return abs(L - R) + Dash
+
+# Time Complexity: O(N)
+# Space Complexity: O(1)
+# by ar-sayeem [April 07, 2026]
+ 
+Previous
+Furthest Distance from Origin | Greedy Counting | Beginner Friendly 🟢
+Next
+One line solutions
+Comments (3)
+
+Sort by:Best
+Type comment here...
+Comment
+
+stasf25
+50 Days Badge 2025
+7 hours ago
+One-pass ONE-liner
+
+ 
+1
+Reply
+
+dreammonster12
+50 Days Badge 2024
+7 hours ago
+Never stop with these please. GOD IS GREAT
+
+ 
+0
+Reply
+
+Dhanyashree_J
+365 Days Badge
+13 hours ago
+easily solved : https://leetcode.com/problems/furthest-point-from-origin/solutions/8087008/greedy-counting-trick-for-maximum-distan-jfdv
+
+follow for more clean solution
+
+ 
+0
+Reply
+
+4
+
+
+3
+
+
+Python3
+Auto
+
+
+
+
+
+123
+class Solution:
+    def furthestDistanceFromOrigin(self, moves: str) -> int:
+        
+Saved
+Daily Question
+
+Tag
+2435. Paths in Matrix Whose Sum Is Divisible by K
+Hard
+
+3381. Maximum Subarray Sum With Length Divisible by K
+Med.
+
+2872. Maximum Number of K-Divisible Components
+Hard
+
+3512. Minimum Operations to Make Array Sum Divisible by K
+Easy
+
+1590. Make Sum Divisible by P
+Med.
+
+2141. Maximum Running Time of N Computers
+Hard
+
+3623. Count Number of Trapezoids I
+Med.
+
+3625. Count Number of Trapezoids II
+Hard
+
+2211. Count Collisions on a Road
+Med.
+
+3432. Count Partitions with Even Sum Difference
+Easy
+
+3578. Count Partitions With Max-Min Difference at Most K
+Med.
+
+1523. Count Odd Numbers in an Interval Range
+Easy
+
+1925. Count Square Sum Triples
+Easy
+
+3583. Count Special Triplets
+Med.
+
+3577. Count the Number of Computer Unlocking Permutations
+Med.
+
+3531. Count Covered Buildings
+Med.
+
+3433. Count Mentions Per User
+Med.
+
+3606. Coupon Code Validator
+Easy
+
+2147. Number of Ways to Divide a Long Corridor
+Hard
+
+2110. Number of Smooth Descent Periods of a Stock
+Med.
+
+3562. Maximum Profit from Trading Stocks with Discounts
+Hard
+
+3573. Best Time to Buy and Sell Stock V
+Med.
+
+3652. Best Time to Buy and Sell Stock using Strategy
+Med.
+
+2092. Find All People With Secret
+Hard
+
+944. Delete Columns to Make Sorted
+Easy
+
+955. Delete Columns to Make Sorted II
+Med.
+
+960. Delete Columns to Make Sorted III
+Hard
+
+2054. Two Best Non-Overlapping Events
+Med.
+
+3074. Apple Redistribution into Boxes
+Easy
+
+3075. Maximize Happiness of Selected Children
+Med.
+
+2483. Minimum Penalty for a Shop
+Med.
+
+2402. Meeting Rooms III
+Hard
+
+1351. Count Negative Numbers in a Sorted Matrix
+Easy
+
+756. Pyramid Transition Matrix
+Med.
+
+840. Magic Squares In Grid
+Med.
+
+1970. Last Day Where You Can Still Cross
+Hard
+
+66. Plus One
+Easy
+
+961. N-Repeated Element in Size 2N Array
+Easy
+
+1411. Number of Ways to Paint N × 3 Grid
+Hard
+
+1390. Four Divisors
+Med.
+
+1975. Maximum Matrix Sum
+Med.
+
+1161. Maximum Level Sum of a Binary Tree
+Med.
+
+1339. Maximum Product of Splitted Binary Tree
+Med.
+
+1458. Max Dot Product of Two Subsequences
+Hard
+
+865. Smallest Subtree with all the Deepest Nodes
+Med.
+
+712. Minimum ASCII Delete Sum for Two Strings
+Med.
+
+85. Maximal Rectangle
+Hard
+
+1266. Minimum Time Visiting All Points
+Easy
+
+3453. Separate Squares I
+Med.
+
+3454. Separate Squares II
+Hard
+
+2943. Maximize Area of Square Hole in Grid
+Med.
+
+2975. Maximum Square Area by Removing Fences From a Field
+Med.
+
+3047. Find the Largest Area of Square Inside Two Rectangles
+Med.
+
+1895. Largest Magic Square
+Med.
+
+1292. Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+Med.
+
+3314. Construct the Minimum Bitwise Array I
+Easy
+
+3315. Construct the Minimum Bitwise Array II
+Med.
+
+3507. Minimum Pair Removal to Sort Array I
+Easy
+
+3510. Minimum Pair Removal to Sort Array II
+Hard
+
+1877. Minimize Maximum Pair Sum in Array
+Med.
+
+1984. Minimum Difference Between Highest and Lowest of K Scores
+Easy
+
+1200. Minimum Absolute Difference
+Easy
+
+3650. Minimum Cost Path with Edge Reversals
+Med.
+
+3651. Minimum Cost Path with Teleportations
+Hard
+
+2976. Minimum Cost to Convert String I
+Med.
+
+2977. Minimum Cost to Convert String II
+Hard
+
+744. Find Smallest Letter Greater Than Target
+Easy
+
+3010. Divide an Array Into Subarrays With Minimum Cost I
+Easy
+
+3013. Divide an Array Into Subarrays With Minimum Cost II
+Hard
+
+3637. Trionic Array I
+Easy
+
+3640. Trionic Array II
+Hard
+
+3379. Transformed Array
+Easy
+
+3634. Minimum Removals to Balance Array
+Med.
+
+1653. Minimum Deletions to Make String Balanced
+Med.
+
+110. Balanced Binary Tree
+Easy
+
+1382. Balance a Binary Search Tree
+Med.
+
+3719. Longest Balanced Subarray I
+Med.
+
+3721. Longest Balanced Subarray II
+Hard
+
+3713. Longest Balanced Substring I
+Med.
+
+3714. Longest Balanced Substring II
+Med.
+
+799. Champagne Tower
+Med.
+
+67. Add Binary
+Easy
+
+190. Reverse Bits
+Easy
+
+401. Binary Watch
+Easy
+
+693. Binary Number with Alternating Bits
+Easy
+
+696. Count Binary Substrings
+Easy
+
+761. Special Binary String
+Hard
+
+762. Prime Number of Set Bits in Binary Representation
+Easy
+
+868. Binary Gap
+Easy
+
+1461. Check If a String Contains All Binary Codes of Size K
+Med.
+
+1022. Sum of Root To Leaf Binary Numbers
+Easy
+
+1356. Sort Integers by The Number of 1 Bits
+Easy
+
+1404. Number of Steps to Reduce a Number in Binary Representation to One
+Med.
+
+3666. Minimum Operations to Equalize Binary String
+Hard
+
+1680. Concatenation of Consecutive Binary Numbers
+Med.
+
+1689. Partitioning Into Minimum Number Of Deci-Binary Numbers
+Med.
+
+1536. Minimum Swaps to Arrange a Binary Grid
+Med.
+
+1545. Find Kth Bit in Nth Binary String
+Med.
+
+1582. Special Positions in a Binary Matrix
+Easy
+
+1758. Minimum Changes To Make Alternating Binary String
+Easy
+
+1784. Check if Binary String Has at Most One Segment of Ones
+Easy
+
+1888. Minimum Number of Flips to Make the Binary String Alternating
+Med.
+
+1980. Find Unique Binary String
+Med.
+
+3129. Find All Possible Stable Binary Arrays I
+Med.
+
+3130. Find All Possible Stable Binary Arrays II
+Hard
+
+1009. Complement of Base 10 Integer
+Easy
+
+3600. Maximize Spanning Tree Stability with Upgrades
+Hard
+
+3296. Minimum Number of Seconds to Make Mountain Height Zero
+Med.
+
+1415. The k-th Lexicographical String of All Happy Strings of Length n
+Med.
+
+1622. Fancy Sequence
+Hard
+
+1878. Get Biggest Three Rhombus Sums in a Grid
+Med.
+
+1727. Largest Submatrix With Rearrangements
+Med.
+
+3070. Count Submatrices with Top-Left Element and Sum Less Than k
+Med.
+
+3212. Count Submatrices With Equal Frequency of X and Y
+Med.
+
+3567. Minimum Absolute Difference in Sliding Submatrix
+Med.
+
+3643. Flip Square Submatrix Vertically
+Easy
+
+1886. Determine Whether Matrix Can Be Obtained By Rotation
+Easy
+
+1594. Maximum Non Negative Product in a Matrix
+Med.
+
+2906. Construct Product Matrix
+Med.
+
+3546. Equal Sum Grid Partition I
+Med.
+
+3548. Equal Sum Grid Partition II
+Hard
+
+2946. Matrix Similarity After Cyclic Shifts
+Easy
+
+2573. Find the String with LCP
+Hard
+
+2839. Check if Strings Can be Made Equal With Operations I
+Easy
+
+2840. Check if Strings Can be Made Equal With Operations II
+Med.
+
+3474. Lexicographically Smallest Generated String
+Hard
+
+2751. Robot Collisions
+Hard
+
+3418. Maximum Amount of Money Robot Can Earn
+Med.
+
+3661. Maximum Walls Destroyed by Robots
+Hard
+
+2075. Decode the Slanted Ciphertext
+Med.
+
+657. Robot Return to Origin
+Easy
+
+874. Walking Robot Simulation
+Med.
+
+2069. Walking Robot Simulation II
+Med.
+
+3653. XOR After Range Multiplication Queries I
+Med.
+
+3655. XOR After Range Multiplication Queries II
+Hard
+
+3740. Minimum Distance Between Three Equal Elements I
+Easy
+
+3741. Minimum Distance Between Three Equal Elements II
+Med.
+
+1320. Minimum Distance to Type a Word Using Two Fingers
+Hard
+
+1848. Minimum Distance to the Target Element
+Easy
+
+2463. Minimum Total Distance Traveled
+Hard
+
+2515. Shortest Distance to Target String in a Circular Array
+Easy
+
+3488. Closest Equal Element Queries
+Med.
+
+3761. Minimum Absolute Distance Between Mirror Pairs
+Med.
+
+3783. Mirror Distance of an Integer
+Easy
+
+1855. Maximum Distance Between a Pair of Values
+Med.
+
+2078. Two Furthest Houses With Different Colors
+Easy
+
+1722. Minimize Hamming Distance After Swap Operations
+Med.
+
+2452. Words Within Two Edits of Dictionary
+Med.
+
+2615. Sum of Distances
+Med.
+
+2833. Furthest Point From Origin
+Easy
+
