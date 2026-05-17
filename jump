@@ -1,0 +1,13 @@
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        vis = [False] * len(arr)
+
+        def dfs(i: int) -> bool:
+            if i < 0 or i >= len(arr) or vis[i]:
+                return False
+            if arr[i] == 0:
+                return True
+            vis[i] = True
+            return dfs(i + arr[i]) or dfs(i - arr[i])
+
+        return dfs(start)
