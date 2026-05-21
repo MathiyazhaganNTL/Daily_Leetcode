@@ -1,0 +1,33 @@
+from collections import defaultdict
+class Solution:
+    def longestCommonPrefix(self, arr1: List[int], arr2: List[int]) -> int:
+        n1,n2=len(arr1),len(arr2)
+        d1=defaultdict(int)
+        d2=defaultdict(int)
+        mx=0
+        i,j=0,0
+        while i<n1 or j<n2:
+            s1=str(arr1[i]) if i<n1 else ""
+            s2=str(arr2[j]) if j<n2 else ""
+            l1=len(s1) if i<n1 else 0
+            l2=len(s2) if j<n2 else 0
+            k, l = 0, 0
+            mxlen = 0
+            while k <l1 or l < l2:
+                if k < l1 and l < l2 and s1[:k+1] == s2[:l+1]:
+                    mxlen = max(mxlen, k+1)
+                    print("s",s1[:k+1],s2[:l+1])
+                if k < l1 and s1[:k+1] in d2:
+                    mxlen = max(mxlen, k+1)
+                if l < l2 and s2[:l+1] in d1:
+                    mxlen = max(mxlen, l+1)
+                if k<l1:
+                    d1[s1[:k+1]]+=1
+                if l<l2:
+                    d2[s2[:l+1]]+=1
+                k += 1
+                l += 1
+            mx=max(mxlen,mx)
+            i+=1
+            j+=1
+        return mx
