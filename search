@@ -1,0 +1,5 @@
+class Solution:
+    def search(self, a: List[int], t: int) -> int:
+        f = lambda i:a[0]<=t<=a[i] if a[0]<=a[i] else not a[i]<t<=a[-1]
+        i = bisect_left(range(len(a)),1,key=f)
+        return i if a[i%len(a)]==t else -1
