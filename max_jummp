@@ -1,0 +1,44 @@
+class Solution:
+    def maxJumps(self, arr: List[int], d: int) -> int:
+        n = len(arr)
+        graph = defaultdict(list)
+        indegree = defaultdict(int)
+        # consider larger (can jump from) from right side
+        increasing_stack = []
+        for i in range(n):
+            num = arr[i]
+            while increasing_stack:
+                if arr[increasing_stack[-1]] < num and i-increasing_stack[-1] <= d:
+                    index = increasing_stack.pop()
+                    graph[i].append(index)
+                    indegree[index] += 1
+                else:
+                    break
+            increasing_stack.append(i)
+        # consider larger from left side
+        increasing_stack = []
+        for j in range(n-1, -1, -1):
+            num = arr[j]
+            while increasing_stack:
+                if arr[increasing_stack[-1]] < num and increasing_stack[-1]-j <= d:
+                    index = increasing_stack.pop()
+                    graph[j].append(index)
+                    indegree[index] += 1
+                else:
+                    break
+            increasing_stack.append(j)
+        queue = deque()
+        for i in range(n):
+            if i not in indegree:
+                queue.append((i, 0))
+        max_jump = 0
+        while queue:
+            # each layer increases total number of jumps by 1
+            for _ in range(len(queue)):
+                curr_index, jump = queue.popleft()
+                for neighbor in graph[curr_index]:
+                    indegree[neighbor] -= 1
+                    if indegree[neighbor] == 0:
+                        queue.append((neighbor, jump+1))
+            max_jump += 1
+        return max_jump
