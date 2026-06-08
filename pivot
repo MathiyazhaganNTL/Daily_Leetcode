@@ -1,0 +1,18 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        sm=[]
+        big=[]
+        ans=[]
+        for i in nums:
+            if i<pivot:
+                sm.append(i)
+            if i>pivot:
+                big.append(i)
+        for i in nums:
+            if i==pivot:
+                sm.append(i)
+        for j in sm:
+            ans.append(j)
+        for k in big:
+            ans.append(k)
+        return ans
