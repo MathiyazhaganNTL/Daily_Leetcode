@@ -1,0 +1,4 @@
+class Solution:
+    def gcdSum(self, a: list[int]) -> int:
+        b = sorted(map(gcd,a,accumulate(a,max)))
+        return sum(map(gcd,b[:len(b)//2],b[::-1]))
