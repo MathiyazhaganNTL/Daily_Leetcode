@@ -1,0 +1,17 @@
+class Solution:
+    def maxActiveSectionsAfterTrade(self, s: str) -> int:
+        fa = {
+            0: {'0': (1,1), '1': (0,0)},
+            1: {'0': (1,1), '1': (0,2)},
+            2: {'0': (2,3), '1': (0,2)},
+            3: {'0': (2,3), '1': (3,2)}
+        }
+        ones,head,tail,mx,state = 0,0,0,0,0
+        for inp in s + '1':
+            act,state = fa[state][inp]
+            ones     += inp=='1'
+            match act:
+                case 1: head += 1
+                case 2: tail += 1
+                case 3: mx = max(mx, head+tail); head,tail = tail,0
+        return  ones-1 +mx
