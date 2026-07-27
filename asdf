@@ -1,0 +1,4 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        return prod(map(sub, nlargest(2,nums), [1,1]))
+        
