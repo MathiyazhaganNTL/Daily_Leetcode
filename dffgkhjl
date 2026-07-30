@@ -1,0 +1,352 @@
+Slide 1 – Title
+Research Paper Semantic Retrieval using RAG Pipeline
+Comparative Analysis of Chunking Strategies, Embedding Models, and Vector Database Retrieval
+
+Presented by
+Mathiyazhagan T
+
+Technology Stack
+
+Python
+LangChain
+HuggingFace
+Sentence Transformers
+ChromaDB
+FAISS
+Google Colab
+Slide 2 – Project Overview
+Objective
+
+This project builds an end-to-end Retrieval-Augmented Generation (RAG) pipeline for research paper analysis.
+
+The system processes a research paper, cleans textual content, generates multiple chunking strategies, creates semantic embeddings, retrieves the most relevant information, evaluates retrieval quality, and stores the embeddings inside a vector database for efficient semantic search.
+
+Key Goals
+Extract text from research papers
+Clean noisy PDF content
+Compare chunking strategies
+Generate embeddings
+Retrieve relevant context
+Evaluate retrieval accuracy
+Store embeddings inside ChromaDB
+Slide 3 – Problem Statement
+
+Traditional keyword search struggles to retrieve relevant information from lengthy research papers because it depends heavily on exact word matching.
+
+Challenges include:
+
+Large document size
+Context fragmentation
+Poor semantic understanding
+Duplicate information
+Low retrieval precision
+
+The proposed RAG pipeline addresses these issues through semantic chunking, dense vector embeddings, and vector similarity search.
+
+Slide 4 – Overall Architecture
+Research Paper PDF
+
+        │
+
+        ▼
+
+PDF Loader
+
+        │
+
+        ▼
+
+Text Cleaning
+
+        │
+
+        ▼
+
+Chunk Generation
+
+Fixed
+Recursive
+Semantic
+
+        │
+
+        ▼
+
+Embedding Generation
+
+BGE
+MixedBread
+
+        │
+
+        ▼
+
+Similarity Search
+
+Cosine Similarity
+
+        │
+
+        ▼
+
+Evaluation
+
+Hit@K
+MRR
+
+        │
+
+        ▼
+
+Chroma Vector Database
+Slide 5 – Dataset
+Input Dataset
+
+Research Paper
+
+Title
+
+Agentic Retrieval-Augmented Generation:
+A Survey on Agentic RAG
+
+Dataset Processing
+PDF Loading
+Page Extraction
+Metadata Extraction
+Content Cleaning
+Document Preparation
+
+Each page is converted into structured LangChain Document objects.
+
+Slide 6 – Text Preprocessing
+Data Cleaning
+
+Before chunk generation, the document undergoes preprocessing.
+
+Cleaning includes
+
+Remove null characters
+Remove unwanted spaces
+Normalize line breaks
+Preserve paragraph structure
+Remove formatting noise
+
+Benefits
+
+Cleaner embeddings
+Better retrieval accuracy
+Reduced noise
+Slide 7 – Chunking Strategies
+
+Three chunking strategies are evaluated.
+
+Fixed Chunking
+Equal chunk size
+Fixed overlap
+Fast processing
+May split meaningful sentences
+Recursive Chunking
+Uses paragraph hierarchy
+Preserves document structure
+Better context retention
+Semantic Chunking
+Uses embedding similarity
+Splits based on meaning
+Highest semantic quality
+Slide 8 – Chunk Comparison
+Strategy	Advantages	Limitations
+Fixed	Simple and Fast	Context Loss
+Recursive	Better Structure	Slightly Larger Chunks
+Semantic	Meaning Preserved	Computationally Expensive
+
+Observation
+
+Semantic chunking provides the highest contextual coherence for retrieval tasks.
+
+Slide 9 – Embedding Generation
+
+The chunks are transformed into dense numerical vectors.
+
+Embedding Models
+
+BAAI/bge-small-en-v1.5
+Lightweight
+Fast
+Good semantic performance
+MixedBread Large
+Higher embedding quality
+Better retrieval accuracy
+Higher computational cost
+
+Embedding converts text into high-dimensional vectors suitable for semantic search.
+
+Slide 10 – Retrieval Process
+
+Query Example
+
+"What is Retrieval-Augmented Generation?"
+
+Pipeline
+
+User Query
+
+↓
+
+Generate Query Embedding
+
+↓
+
+Cosine Similarity
+
+↓
+
+Rank Similar Chunks
+
+↓
+
+Return Top-K Results
+
+This enables semantic retrieval instead of keyword matching.
+
+Slide 11 – Retrieval Evaluation
+
+Evaluation Metrics
+
+Hit@K
+
+Measures whether the correct document appears in the top retrieved results.
+
+Higher value indicates better retrieval.
+
+Mean Reciprocal Rank (MRR)
+
+Evaluates the ranking position of the correct answer.
+
+Higher MRR indicates better ranking quality.
+
+These metrics compare retrieval effectiveness across different chunking strategies.
+
+Slide 12 – Embedding Model Comparison
+
+Two embedding models are evaluated.
+
+BGE Small
+
+Advantages
+
+Fast inference
+Lightweight
+Suitable for production
+MixedBread Large
+
+Advantages
+
+Better semantic understanding
+Higher retrieval quality
+More computational resources required
+
+The comparison identifies the most effective embedding model for research paper retrieval.
+
+Slide 13 – Vector Database
+ChromaDB Integration
+
+Generated embeddings are stored inside ChromaDB.
+
+Benefits
+
+Fast semantic search
+Persistent storage
+Scalable retrieval
+Efficient similarity search
+
+Collection Name
+
+agentic_rag
+Slide 14 – Technologies Used
+Component	Technology
+Programming	Python
+Framework	LangChain
+PDF Loader	PyPDF
+Embedding	HuggingFace
+Models	BGE Small, MixedBread
+Chunking	LangChain Text Splitters
+Vector DB	ChromaDB
+Similarity	Cosine Similarity
+Notebook	Google Colab
+Slide 15 – Experimental Workflow
+Load PDF
+
+↓
+
+Clean Document
+
+↓
+
+Generate Chunks
+
+↓
+
+Create Embeddings
+
+↓
+
+Perform Similarity Search
+
+↓
+
+Evaluate Retrieval
+
+↓
+
+Compare Strategies
+
+↓
+
+Store into ChromaDB
+Slide 16 – Key Findings
+
+The study demonstrates that:
+
+Text preprocessing improves embedding quality.
+Recursive chunking preserves document structure better than fixed chunking.
+Semantic chunking provides the strongest contextual understanding.
+Dense embeddings significantly outperform keyword-based retrieval.
+ChromaDB enables scalable and efficient semantic search.
+Slide 17 – Applications
+
+This pipeline can be applied to:
+
+Research Paper Search
+Academic Question Answering
+Enterprise Knowledge Base
+Legal Document Retrieval
+Medical Literature Search
+Technical Documentation Search
+AI Chatbots
+Intelligent Document Assistants
+Slide 18 – Future Enhancements
+
+Potential improvements include:
+
+Multi-document retrieval
+Hybrid BM25 + Dense Retrieval
+Cross-Encoder Re-ranking
+Agentic RAG Workflow
+Metadata-aware Retrieval
+Graph-based Knowledge Retrieval
+LLM Response Generation
+Distributed Vector Databases
+Slide 19 – Conclusion
+
+This project successfully developed a complete Retrieval-Augmented Generation pipeline for research paper understanding.
+
+The implementation demonstrates:
+
+Effective document preprocessing
+Multiple chunking techniques
+Dense semantic embeddings
+Accurate similarity retrieval
+Quantitative evaluation
+Vector database integration
+
+The pipeline provides a strong foundation for building intelligent document search and question-answering systems.
