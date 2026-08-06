@@ -1,0 +1,3 @@
+class Solution:
+    def smallestNumber(self, n: int, t: int) -> int:
+        return next(v for v in count(n) if prod(map(int,str(v)))%t==0)
