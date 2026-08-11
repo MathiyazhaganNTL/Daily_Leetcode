@@ -1,0 +1,21 @@
+class Solution:
+    def missingInteger(self, nums: List[int]) -> int:
+        # Find the sum of the longest consecutive prefix
+        sm = nums[0]
+
+        for i in range(1, len(nums)):
+            if nums[i] - nums[i - 1] == 1:
+                sm += nums[i]
+            else:
+                break
+
+        # Store all elements for O(1) average lookup
+        s = set(nums)
+
+        # Find the smallest missing integer >= prefix sum
+        num = sm
+
+        while num in s:
+            num += 1
+
+        return num
