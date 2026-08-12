@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxSubarrayLength(vector<int>& nums, int k) {
+        // two pointers
+        // we check if freq > k for some element. If yes, we move our left pointer 
+        int l = 0; 
+        int ans = 1; 
+        unordered_map<int, int> mp; 
+        for(int i = 0; i < nums.size(); i++) {
+            mp[nums[i]]++; 
+            while(mp[nums[i]] > k) {
+                mp[nums[l++]]--; 
+            }
+            ans = max(ans, i - l + 1); 
+        }
+        return ans; 
+    }
+};
